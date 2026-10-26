@@ -1,0 +1,9 @@
+; TIP4P/Ice pure water
+#include "ffnonbonded.itp"
+#include "tip4p_ice.itp"
+
+[ system ]
+Pure TIP4P/Ice water
+
+[ molecules ]
+SOL    15993
