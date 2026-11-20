@@ -1,0 +1,18 @@
+# GROMACS binary outputs
+*.tpr
+*.trr
+*.edr
+*.cpt
+*.xtc
+*.log
+
+# except the one log we document the run with
+!em.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NOTE: water.gro (input) and em.gro (output) are tracked on purpose --
+# they are small enough to be useful as a reproducible example.

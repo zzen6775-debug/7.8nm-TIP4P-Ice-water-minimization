@@ -1,12 +1,27 @@
-; Energy minimization for TIP4P/Ice water
-integrator   = steep
-nsteps        = 5000
-emtol         = 1000.0
-emstep        = 0.01
+; Energy minimization of a 7.8 nm cubic box of pure TIP4P/Ice water
+; GROMACS 2025.4
+;
+; The committed em.gro / em.log were produced with emtol = 1000 (converged in
+; 17 steps, Fmax = 762 kJ mol^-1 nm^-1, PE = -8.835e5 kJ/mol).
+;
+; NOTE: for a structure that will be used for production MD, tighten emtol to
+; 100 (or even 10) kJ mol^-1 nm^-1. The value below is kept at 1000 only so
+; that it reproduces the committed outputs exactly. Tightening it is cheap --
+; this box converges in a few dozen steps.
 
-nstlist        = 10
-cutoff-scheme  = Verlet
-coulombtype    = PME
-rcoulomb       = 1.0
-rvdw           = 1.0
-pbc            = xyz
+integrator      = steep
+nsteps          = 50000
+emtol           = 1000.0        ; kJ mol^-1 nm^-1  (see note above)
+emstep          = 0.01          ; nm
+
+; ---- nonbonded ----
+cutoff-scheme   = Verlet
+nstlist         = 10
+coulombtype     = PME
+rcoulomb        = 1.0
+rvdw            = 1.0
+pbc             = xyz
+
+; ---- output ----
+nstenergy       = 100
+nstlog          = 100
